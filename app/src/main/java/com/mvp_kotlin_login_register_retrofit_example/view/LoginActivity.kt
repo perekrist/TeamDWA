@@ -12,6 +12,8 @@ import android.widget.Toast
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.LoginPresenterImpl
 import kotlinx.android.synthetic.main.activity_login.*
 import com.mvp_kotlin_login_register_retrofit_example.R.*
+import java.math.BigInteger
+import java.security.MessageDigest
 
 
 open class LoginActivity : AppCompatActivity(), ILoginView {
@@ -23,6 +25,11 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
         setupView()
     }
 
+    fun String.md5(): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
+    }
+
     private fun setupView() {
 
         btn_login.setOnClickListener {
@@ -30,7 +37,7 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             loginPresenter.setProgressBarVisibility(View.VISIBLE)
             btn_login.isEnabled = false
             val name = input_email.text.toString().trim()
-            val passwd = input_password.text.toString().trim()
+            val passwd = input_password.text.toString().trim().md5()
 
             if (areFieldsValid(name , passwd)) {
 //                loginPresenter.doLogin(name, passwd)

@@ -12,6 +12,8 @@ import com.mvp_kotlin_login_register_retrofit_example.view.interfaces.IRegistrat
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.input_mobile
 import kotlinx.android.synthetic.main.activity_registration.input_password
+import java.math.BigInteger
+import java.security.MessageDigest
 import java.util.regex.Pattern
 
 
@@ -26,6 +28,11 @@ class RegistrationActivity : AppCompatActivity()  , IRegistrationView {
         setupView()
     }
 
+    fun String.md5(): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
+    }
+
     private fun setupView() {
         btn_register.setOnClickListener {
             registrationPresenter.setProgressBarVisibility(View.VISIBLE)
@@ -35,7 +42,7 @@ class RegistrationActivity : AppCompatActivity()  , IRegistrationView {
             val patronymic = input_patronymic.text.toString().trim()
             val phoneNumber = input_mobile.text.toString().trim()
             val email = input_email.text.toString().trim()
-            val passwd = input_password.text.toString().trim()
+            val passwd = input_password.text.toString().trim().md5()
 
 
             if (areFieldsValid(firstName , lastName, patronymic, phoneNumber,  email, passwd))
