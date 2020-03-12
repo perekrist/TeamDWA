@@ -14,9 +14,8 @@
             android:screenOrientation="portrait"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true">
-        <activity android:name=".TakePhotoActivity"></activity>
-        <activity android:name=".view.UpdatePasswordActivity"></activity>
+            android:networkSecurityConfig="@xml/network_security_config">
+        <activity android:name=".view.TakePhotoActivity"></activity>
         <activity android:name=".view.HomeActivity"></activity>
         <activity android:name=".view.RegistrationActivity"></activity>
         <activity android:name=".view.LoginActivity"></activity>

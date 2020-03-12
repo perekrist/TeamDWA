@@ -39,7 +39,6 @@ class LoginPresenterImpl(var iLoginView: ILoginView , val context: Context) : IL
                     iLoginView.onLoginResult(false, -1)
                 } else {
                     loginResponseModel = response.body()!!
-                    loginResponseModel.sessionId = (response.headers().get("Set-Cookie").toString())
 
                     val prefsEditor = mPrefs.edit()
                     val gson = Gson()

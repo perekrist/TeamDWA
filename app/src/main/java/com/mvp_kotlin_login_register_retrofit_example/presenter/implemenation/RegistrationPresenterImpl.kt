@@ -29,37 +29,41 @@ class RegistrationPresenterImpl(private var iRegistrationView: IRegistrationView
         mobile: String
     ) {
         val data = HashMap<String, String>()
-        data["firstName"] = firstName
-        data["lastName"] = lastName
+        data["first_name"] = firstName
+        data["second_name"] = lastName
         data["patronymic"] = patronymic
-        data["phoneNumber"] = mobile
+        data["phone"] = mobile
         data["email"] = email
         data["password"] = password
 
         val body = RequestBody.create(
-            okhttp3.MediaType.parse("application/json; charset=utf-8"),
+            okhttp3.MediaType.parse("application/json"),
             JSONObject(data).toString()
         )
 
         Webservice.getInstance().getApi().register(body).enqueue(object : Callback<LoginResponseModel> {
-            override fun onResponse(call: Call<LoginResponseModel>, response: Response<LoginResponseModel>) =
+            override fun onResponse(call: Call<LoginResponseModel>, response: Response<LoginResponseModel>) {
+                println("onResp")
+                println(body)
                 if (!response.isSuccessful) {
-                    iRegistrationView.onRegistrationResult(false, -1 , "")
-                    //    val jObjError = JSONObject(response.errorBody()!!.string())
+                    iRegistrationView.onRegistrationResult(false, -1, "")
                 } else {
                     registerationResponseModel = response.body()!!
 
                     val prefsEditor = mPrefs.edit()
                     val gson = Gson()
-                    val json = gson.toJson( registerationResponseModel )
+                    val json = gson.toJson(registerationResponseModel)
                     prefsEditor.putString("MyObject", json)
-                    prefsEditor.putBoolean("isLogin" , true)
+                    prefsEditor.putBoolean("isLogin", true)
                     prefsEditor.apply()
 
-                    iRegistrationView.onRegistrationResult(true, 1 , "")
+                    iRegistrationView.onRegistrationResult(true, 1, "")
                 }
+            }
 
             override fun onFailure(call: Call<LoginResponseModel>, t: Throwable) {
+                println("onFail")
+                println(body)
                 Log.e("login", "onFailure: ", t)
                 iRegistrationView.onRegistrationResult(false, 0 , "")
             }

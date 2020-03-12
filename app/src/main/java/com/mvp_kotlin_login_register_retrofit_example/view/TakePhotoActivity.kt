@@ -1,4 +1,4 @@
-package com.mvp_kotlin_login_register_retrofit_example
+package com.mvp_kotlin_login_register_retrofit_example.view
 
 import android.Manifest
 import android.app.Activity
@@ -15,6 +15,8 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.mvp_kotlin_login_register_retrofit_example.AppConstants
+import com.mvp_kotlin_login_register_retrofit_example.R
 import kotlinx.android.synthetic.main.activity_take_photo.*
 
 class TakePhotoActivity : AppCompatActivity() {
@@ -43,7 +45,9 @@ class TakePhotoActivity : AppCompatActivity() {
             intent.addFlags(
                 Intent.FLAG_GRANT_READ_URI_PERMISSION
                         or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-            startActivityForResult(intent, AppConstants.TAKE_PHOTO_REQUEST)
+            startActivityForResult(intent,
+                AppConstants.TAKE_PHOTO_REQUEST
+            )
         }
     }
 
@@ -92,10 +96,12 @@ class TakePhotoActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int,
                                   data: Intent?) {
         if (resultCode == Activity.RESULT_OK
-            && requestCode == AppConstants.TAKE_PHOTO_REQUEST) {
+            && requestCode == AppConstants.TAKE_PHOTO_REQUEST
+        ) {
             imageView.setImageURI(fileUri)
         }else if(resultCode == Activity.RESULT_OK
-            && requestCode == AppConstants.PICK_PHOTO_REQUEST){
+            && requestCode == AppConstants.PICK_PHOTO_REQUEST
+        ){
             //photo from gallery
             fileUri = data?.data
             imageView.setImageURI(fileUri)
