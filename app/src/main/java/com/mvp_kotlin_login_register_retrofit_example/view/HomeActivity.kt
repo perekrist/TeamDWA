@@ -16,15 +16,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-     //   getUserData()
+//        getUserData()
     }
 
-    private fun getUserData() {
-        mPrefs = getSharedPreferences("id", Context.MODE_PRIVATE)
-        val gson = Gson()
-        val json = mPrefs.getString("MyObject", "")
-        currentuser = gson.fromJson<LoginResponseModel>(json, LoginResponseModel::class.java!!)
-    }
+//    private fun getUserData() {
+//        mPrefs = getSharedPreferences("id", Context.MODE_PRIVATE)
+//        val gson = Gson()
+//        val json = mPrefs.getString("MyObject", "")
+//        currentuser = gson.fromJson<LoginResponseModel>(json, LoginResponseModel::class.java)
+//    }
 
 
 }
