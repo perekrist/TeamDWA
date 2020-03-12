@@ -50,6 +50,19 @@
     <string name="registration">Registration</string>
     <string name="registration_desc">it\'s free and always will be.</string>
     <string name="contact_us">Contact Us</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_list">List</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_create">Create</string>
+    <string name="menu_sign_out">SignOut</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 
 
 </resources>

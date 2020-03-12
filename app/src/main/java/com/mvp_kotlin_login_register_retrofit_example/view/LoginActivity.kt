@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.mvp_kotlin_login_register_retrofit_example.MenuActivity
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.LoginPresenterImpl
 import kotlinx.android.synthetic.main.activity_login.*
 import com.mvp_kotlin_login_register_retrofit_example.R.*
@@ -91,7 +92,7 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
     }
 
     private fun goToHomeScreen() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, MenuActivity::class.java)
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
         startActivity(intent)
         finish()

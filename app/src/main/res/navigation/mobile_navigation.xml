@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/nav_list">
+
+    <fragment
+            android:id="@+id/nav_list"
+            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.home.HomeFragment"
+            android:label="@string/menu_list"
+            tools:layout="@layout/fragment_list" />
+
+    <fragment
+            android:id="@+id/nav_account"
+            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.gallery.GalleryFragment"
+            android:label="@string/menu_account"
+            tools:layout="@layout/fragment_account" />
+
+    <fragment
+            android:id="@+id/nav_create"
+            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.slideshow.SlideshowFragment"
+            android:label="@string/menu_create"
+            tools:layout="@layout/fragment_create" />
+
+    <fragment
+            android:id="@+id/nav_sign_out"
+            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.tools.ToolsFragment"
+            android:label="@string/menu_sign_out"
+            tools:layout="@layout/fragment_sign_out" />
+</navigation>
