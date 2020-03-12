@@ -1,4 +1,4 @@
-package com.mvp_kotlin_login_register_retrofit_example.ui.share
+package com.mvp_kotlin_login_register_retrofit_example.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,22 +10,19 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import com.mvp_kotlin_login_register_retrofit_example.R
 
-class ShareFragment : Fragment() {
-
-    private lateinit var shareViewModel: ShareViewModel
+class ListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_share, container, false)
-        val textView: TextView = root.findViewById(R.id.text_share)
-        shareViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
+        val root = inflater.inflate(R.layout.fragment_list, container, false)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }

@@ -1,4 +1,4 @@
-package com.mvp_kotlin_login_register_retrofit_example.ui.send
+package com.mvp_kotlin_login_register_retrofit_example.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,22 +10,21 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import com.mvp_kotlin_login_register_retrofit_example.R
 
-class SendFragment : Fragment() {
+class AccountFragment : Fragment() {
 
-    private lateinit var sendViewModel: SendViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sendViewModel =
-            ViewModelProviders.of(this).get(SendViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_send, container, false)
-        val textView: TextView = root.findViewById(R.id.text_send)
-        sendViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
+        val root = inflater.inflate(R.layout.fragment_account, container, false)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 }
