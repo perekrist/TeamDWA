@@ -33,7 +33,9 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             val passwd = input_password.text.toString().trim()
 
             if (areFieldsValid(name , passwd)) {
-                loginPresenter.doLogin(name, passwd)
+//                loginPresenter.doLogin(name, passwd)
+                val intent = Intent(this, TakePhotoActivity::class.java)
+                startActivity(intent)
             }
         }
 

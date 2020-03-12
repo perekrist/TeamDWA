@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -98,13 +99,9 @@ class TakePhotoActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK
             && requestCode == AppConstants.TAKE_PHOTO_REQUEST
         ) {
-            imageView.setImageURI(fileUri)
-        }else if(resultCode == Activity.RESULT_OK
-            && requestCode == AppConstants.PICK_PHOTO_REQUEST
-        ){
-            //photo from gallery
-            fileUri = data?.data
-            imageView.setImageURI(fileUri)
+            Glide.with(this)
+                .load(fileUri)
+                .into(imageView)
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
