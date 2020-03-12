@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
@@ -34,7 +35,7 @@ class TakePhotoActivity : AppCompatActivity() {
             askCameraPermission()
 
         }
-        alpr=OpenALPR.Factory.create(this,"/data/data/com.mvp_kotlin_login_register_retrofit_example")
+        alpr=OpenALPR.Factory.create(this,"")
     }
     private fun launchCamera() {
         val values = ContentValues(1)
@@ -100,8 +101,9 @@ class TakePhotoActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK
             && requestCode == AppConstants.TAKE_PHOTO_REQUEST) {
             imageView.setImageURI(fileUri)
-            Toast.makeText(this,alpr.recognizeWithCountryRegionNConfig("en","md","app/src/main/assets/runtime_data/openalpr.conf",
-                fileUri.toString(),1),Toast.LENGTH_SHORT).show()
+            var str=alpr.recognizeWithCountryRegionNConfig("en","md","app/src/main/assets/runtime_data/openalpr.conf",
+                fileUri.toString(),1)
+            Toast.makeText(this,str,Toast.LENGTH_SHORT).show()
         }else if(resultCode == Activity.RESULT_OK
             && requestCode == AppConstants.PICK_PHOTO_REQUEST){
             //photo from gallery
