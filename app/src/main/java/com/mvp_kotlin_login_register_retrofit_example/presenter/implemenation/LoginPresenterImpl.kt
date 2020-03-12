@@ -2,6 +2,7 @@ package com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation
 
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Log
@@ -10,6 +11,7 @@ import com.mvp_kotlin_login_register_retrofit_example.model.responseModels.Login
 import com.mvp_kotlin_login_register_retrofit_example.presenter.interfaces.ILoginPresenter
 import com.mvp_kotlin_login_register_retrofit_example.view.interfaces.ILoginView
 import com.google.gson.Gson
+import com.mvp_kotlin_login_register_retrofit_example.view.RegistrationActivity
 import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -21,14 +23,14 @@ class LoginPresenterImpl(var iLoginView: ILoginView , val context: Context) : IL
     lateinit var loginResponseModel: LoginResponseModel
     private val mPrefs: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
-    override fun doLogin(name: String, passwd: String) {
+    override fun doLogin(email: String, passwd: String) {
 
         val data = HashMap<String, String>()
-        data["identity"] = name
+        data["email"] = email
         data["password"] = passwd
 
         val body = RequestBody.create(
-            okhttp3.MediaType.parse("application/json; charset=utf-8"),
+            okhttp3.MediaType.parse("application/json"),
             JSONObject(data).toString()
         )
 
@@ -42,7 +44,7 @@ class LoginPresenterImpl(var iLoginView: ILoginView , val context: Context) : IL
 
                     val prefsEditor = mPrefs.edit()
                     val gson = Gson()
-                    val json = gson.toJson(loginResponseModel) // myObject - instance of MyObject
+                    val json = gson.toJson(loginResponseModel)
                     prefsEditor.putString("MyObject", json)
                     prefsEditor.putBoolean("isLogin" , true)
                     prefsEditor.apply()

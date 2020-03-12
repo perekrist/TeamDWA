@@ -29,13 +29,11 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             btn_login.hideKeyboard()
             loginPresenter.setProgressBarVisibility(View.VISIBLE)
             btn_login.isEnabled = false
-            val name = input_email.text.toString().trim()
+            val email = input_email.text.toString().trim()
             val passwd = input_password.text.toString().trim()
 
-            if (areFieldsValid(name , passwd)) {
-//                loginPresenter.doLogin(name, passwd)
-                val intent = Intent(this, TakePhotoActivity::class.java)
-                startActivity(intent)
+            if (areFieldsValid(email , passwd)) {
+                loginPresenter.doLogin(email, passwd)
             }
         }
 
@@ -44,14 +42,12 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             startActivity(intent)
         }
 
-        //init
         loginPresenter = LoginPresenterImpl(this , this)
         loginPresenter.setProgressBarVisibility(View.INVISIBLE)
     }
 
     private fun areFieldsValid(name: String, passwd: String): Boolean {
         if (name.isEmpty() || passwd.isEmpty()) {
-            //  // Toast.makeText(this, R.string.please_fill_the_needed_data, Toast.LENGTH_SHORT).show()
             btn_login.isEnabled = true
             loginPresenter.setProgressBarVisibility(View.INVISIBLE)
 
@@ -59,9 +55,6 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
 
                 phone_layout_background.background = getDrawable(drawable.error_fieldbackground)
                 ic_name_error.visibility = View.VISIBLE
-/*             params.width = width
-                params.height = hight
-                phone_layout.layoutParams = params*/
 
                 input_email.requestFocus()
             }
@@ -84,7 +77,6 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
     override fun onLoginResult(result: Boolean, code: Int) {
         loginPresenter.setProgressBarVisibility(View.INVISIBLE)
         if (result && code == 1) {
-            //     // Toast.makeText(this,  getString(com.alphagene.R.string.Success), Toast.LENGTH_SHORT).show()
             goToHomeScreen()
         } else {
             Toast.makeText(this,  getString(string.please_try_again), Toast.LENGTH_SHORT).show()
@@ -100,7 +92,7 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
 
     private fun goToHomeScreen() {
         val intent = Intent(this, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
         startActivity(intent)
         finish()
     }

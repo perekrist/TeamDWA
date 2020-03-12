@@ -225,21 +225,6 @@
 
         />
 
-
-        <TextView android:id="@+id/link_forget_password"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_marginBottom="24dp"
-                  android:text="@string/forgetpassword"
-                  android:gravity="start"
-                  android:textStyle="bold"
-                  android:textColor="@color/silver"
-                  android:layout_below="@+id/link_signup"
-                  android:fontFamily="@font/ralewaybold"
-                  android:textSize="14sp"
-                  android:layout_marginRight="24dp"
-                  android:layout_marginLeft="24dp"/>
-
     </RelativeLayout>
 
 

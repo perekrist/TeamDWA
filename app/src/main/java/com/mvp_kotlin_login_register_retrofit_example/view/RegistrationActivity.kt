@@ -107,7 +107,8 @@ class RegistrationActivity : AppCompatActivity()  , IRegistrationView {
     override fun onRegistrationResult(result: Boolean, code: Int, identificationToken: String) {
         registrationPresenter.setProgressBarVisibility(View.INVISIBLE)
         if (result && code == 1) {
-         Toast.makeText(this, getString(R.string.Registration_Success), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Registration_Success), Toast.LENGTH_SHORT).show()
+
         } else {
             Toast.makeText(this, "Registration Fail, code = $code", Toast.LENGTH_SHORT).show()
             btn_register.isEnabled = true
