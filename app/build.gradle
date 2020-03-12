@@ -41,4 +41,3 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.13.0'
     implementation 'com.karumi:dexter:5.0.0'
 }
-
