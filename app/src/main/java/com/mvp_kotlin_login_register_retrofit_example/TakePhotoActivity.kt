@@ -17,9 +17,14 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_take_photo.*
 
+import org.openalpr.*
+import java.io.File
+
+
 class TakePhotoActivity : AppCompatActivity() {
 
     var fileUri: Uri? = null
+    lateinit var alpr:OpenALPR
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +32,9 @@ class TakePhotoActivity : AppCompatActivity() {
 
         takePhoto.setOnClickListener {
             askCameraPermission()
-        }
 
+        }
+        alpr=OpenALPR.Factory.create(this,"/data/data/com.mvp_kotlin_login_register_retrofit_example")
     }
     private fun launchCamera() {
         val values = ContentValues(1)
@@ -94,6 +100,8 @@ class TakePhotoActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK
             && requestCode == AppConstants.TAKE_PHOTO_REQUEST) {
             imageView.setImageURI(fileUri)
+            Toast.makeText(this,alpr.recognizeWithCountryRegionNConfig("en","md","app/src/main/assets/runtime_data/openalpr.conf",
+                fileUri.toString(),1),Toast.LENGTH_SHORT).show()
         }else if(resultCode == Activity.RESULT_OK
             && requestCode == AppConstants.PICK_PHOTO_REQUEST){
             //photo from gallery
