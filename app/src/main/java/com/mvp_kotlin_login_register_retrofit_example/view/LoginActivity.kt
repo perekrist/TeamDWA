@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.mvp_kotlin_login_register_retrofit_example.MenuActivity
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.LoginPresenterImpl
 import kotlinx.android.synthetic.main.activity_login.*
 import com.mvp_kotlin_login_register_retrofit_example.R.*
@@ -41,7 +40,8 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             val passwd = input_password.text.toString().trim().md5()
 
             if (areFieldsValid(email , passwd)) {
-                loginPresenter.doLogin(email, passwd)
+//                loginPresenter.doLogin(email, passwd)
+                goToHomeScreen()
             }
         }
 
