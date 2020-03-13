@@ -40,8 +40,7 @@ open class LoginActivity : AppCompatActivity(), ILoginView {
             val passwd = input_password.text.toString().trim().md5()
 
             if (areFieldsValid(email , passwd)) {
-//                loginPresenter.doLogin(email, passwd)
-                goToHomeScreen()
+                loginPresenter.doLogin(email, passwd)
             }
         }
 

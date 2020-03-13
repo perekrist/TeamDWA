@@ -43,6 +43,7 @@ class RegistrationPresenterImpl(private var iRegistrationView: IRegistrationView
 
         Webservice.getInstance().getApi().register(body).enqueue(object : Callback<LoginResponseModel> {
             override fun onResponse(call: Call<LoginResponseModel>, response: Response<LoginResponseModel>) {
+                println(response)
                 if (!response.isSuccessful) {
                     iRegistrationView.onRegistrationResult(false, -1, "")
                 } else {

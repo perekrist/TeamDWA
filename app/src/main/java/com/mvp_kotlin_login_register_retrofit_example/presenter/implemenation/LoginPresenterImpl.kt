@@ -45,7 +45,11 @@ class LoginPresenterImpl(var iLoginView: ILoginView , val context: Context) : IL
                     val prefsEditor = mPrefs.edit()
                     val gson = Gson()
                     val json = gson.toJson(loginResponseModel)
-                    prefsEditor.putString("MyObject", json)
+
+                    val id = Response(json).user_id!!.toInt()
+
+                    prefsEditor.putInt("id", id)
+//                    prefsEditor.putString("MyObject", json)
                     prefsEditor.putBoolean("isLogin" , true)
                     prefsEditor.apply()
 
@@ -62,4 +66,8 @@ class LoginPresenterImpl(var iLoginView: ILoginView , val context: Context) : IL
     override fun setProgressBarVisibility(visibility: Int) {
         iLoginView.onSetProgressBarVisibility(visibility)
     }
+}
+
+class Response(json: String) : JSONObject(json) {
+    val user_id: String? = this.optString("id")
 }
