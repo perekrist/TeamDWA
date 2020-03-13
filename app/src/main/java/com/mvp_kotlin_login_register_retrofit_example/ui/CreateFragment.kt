@@ -1,6 +1,7 @@
 package com.mvp_kotlin_login_register_retrofit_example.ui
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +10,19 @@ import android.view.ViewGroup
 import android.support.v4.app.Fragment
 import android.arch.lifecycle.ViewModelProviders
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import android.net.Uri
+import android.os.Looper
 import android.provider.MediaStore
+import android.provider.Settings
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.app.AlertDialog
+import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.karumi.dexter.Dexter
@@ -27,6 +37,7 @@ import kotlinx.android.synthetic.main.activity_take_photo.*
 class CreateFragment : Fragment() {
 
     var fileUri: Uri? = null
+    val PERMISSION_ID = 42
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +50,7 @@ class CreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         takePhoto.setOnClickListener {
             askCameraPermission()
@@ -118,4 +130,6 @@ class CreateFragment : Fragment() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+
 }

@@ -1,8 +1,6 @@
 package com.mvp_kotlin_login_register_retrofit_example.view
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -30,7 +28,7 @@ class MenuActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_list,
+                R.id.nav_history,
                 R.id.nav_account,
                 R.id.nav_create,
                 R.id.nav_sign_out

@@ -3,12 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@+id/nav_list">
+        app:startDestination="@+id/nav_create">
 
     <fragment
-            android:id="@+id/nav_list"
-            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.ListFragment"
-            android:label="@string/menu_list"
+            android:id="@+id/nav_history"
+            android:name="com.mvp_kotlin_login_register_retrofit_example.ui.HistoryFragment"
+            android:label="@string/menu_history"
             tools:layout="@layout/fragment_list" />
 
     <fragment

@@ -57,7 +57,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_list">List</string>
+    <string name="menu_history">History</string>
     <string name="menu_account">Account</string>
     <string name="menu_create">Create</string>
     <string name="menu_sign_out">SignOut</string>
