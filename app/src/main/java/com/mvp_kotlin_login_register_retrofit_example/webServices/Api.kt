@@ -18,4 +18,7 @@ interface Api {
     @POST("show_person")
     fun account(@Body headers: RequestBody): Call<UserResponseModel>
 
+    @POST("send_complaint")
+    fun complaint(@Body headers: RequestBody): Call<LoginResponseModel>
+
 }
