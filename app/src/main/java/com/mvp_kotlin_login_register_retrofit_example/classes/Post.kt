@@ -15,3 +15,19 @@ var posts = arrayListOf(
     Post(3,"p270ya", "lawn parking", "", ""),
     Post(4,"p270ya", "parking in the wrong place", "", "")
 )
+
+class PersonData(
+    var nameReal: String,
+    var surnname: String,
+    var parentific: String,
+    var email: String,
+    var phone: String
+)
+
+class SituationModel(
+    var latitude: Float,
+    var longitude:Float,
+    var datatime: String,
+    var id: Int,
+    var comment: String
+)

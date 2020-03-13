@@ -24,7 +24,7 @@ class Webservice {
 
         val retrofit = Retrofit.Builder().client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .baseUrl("http://20d82267.ngrok.io/")
+            .baseUrl("http://bb0cee6c.ngrok.io/")
             .build()
 
         api = retrofit.create(Api::class.java)

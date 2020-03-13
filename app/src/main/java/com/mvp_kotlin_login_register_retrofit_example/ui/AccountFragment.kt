@@ -58,11 +58,6 @@ class AccountFragment : Fragment(), IAccountView {
 
     override fun onAccountResult(result: Boolean, code: Int, response: ResponseAcc) {
         if (result && code == 1) {
-            user_first_name.text = response.user_first_name
-            user_last_name.text = response.user_last_name
-            user_patronymic.text = response.user_patronymic
-            user_email.text = response.user_email
-            user_phone.text = response.user_phone
 
         } else {
             Toast.makeText(context,  getString(R.string.please_try_again), Toast.LENGTH_SHORT).show()

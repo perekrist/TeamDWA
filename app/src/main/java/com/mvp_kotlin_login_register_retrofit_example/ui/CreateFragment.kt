@@ -32,12 +32,19 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.mvp_kotlin_login_register_retrofit_example.AppConstants
 import com.mvp_kotlin_login_register_retrofit_example.R
+import com.mvp_kotlin_login_register_retrofit_example.view.FormActivity
+import com.mvp_kotlin_login_register_retrofit_example.view.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_take_photo.*
+import kotlinx.android.synthetic.main.activity_take_photo.imageView
+import kotlinx.android.synthetic.main.activity_take_photo.takePhoto
+import kotlinx.android.synthetic.main.fragment_create.*
+import kotlin.random.Random
 
 class CreateFragment : Fragment() {
 
     var fileUri: Uri? = null
     val PERMISSION_ID = 42
+    var percent_ = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +61,13 @@ class CreateFragment : Fragment() {
 
         takePhoto.setOnClickListener {
             askCameraPermission()
+        }
+
+        go_to_form.setOnClickListener {
+            if (percent_ >= 70) {
+                val intent = Intent(context , FormActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }
@@ -126,6 +140,9 @@ class CreateFragment : Fragment() {
             Glide.with(this)
                 .load(fileUri)
                 .into(imageView)
+            percent_ = (60..99).random()
+            percent.text = "$percent_%"
+
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }

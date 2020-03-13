@@ -14,6 +14,7 @@ import android.view.Menu
 import com.mvp_kotlin_login_register_retrofit_example.R
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.ResponseAcc
 import com.mvp_kotlin_login_register_retrofit_example.view.interfaces.IAccountView
+import kotlinx.android.synthetic.main.fragment_account.*
 
 class MenuActivity : AppCompatActivity(), IAccountView {
     override fun onSetProgressBarVisibility(visibility: Int) {
@@ -21,7 +22,16 @@ class MenuActivity : AppCompatActivity(), IAccountView {
     }
 
     override fun onAccountResult(result: Boolean, code: Int, response: ResponseAcc) {
-       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        println(response.user_first_name)
+        println(response.user_last_name)
+        println(response.user_patronymic)
+        println(response.user_email)
+
+        user_first_name.text = response.user_first_name
+        user_last_name.text = response.user_last_name
+        user_patronymic.text = response.user_patronymic
+        user_email.text = response.user_email
+        user_phone.text = response.user_phone
     }
 
 

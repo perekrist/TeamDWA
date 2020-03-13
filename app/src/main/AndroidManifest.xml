@@ -17,6 +17,13 @@
             android:screenOrientation="portrait"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key"
+                />
+
+
         <activity
                 android:name=".view.MenuActivity"
                 android:label="@string/title_activity_menu"
@@ -24,6 +31,7 @@
         <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.RegistrationActivity" />
         <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.FormActivity"/>
         <activity
                 android:name=".view.SplashActivity"
                 android:theme="@style/SplashTheme">
