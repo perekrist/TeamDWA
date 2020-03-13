@@ -13,8 +13,7 @@ import android.widget.Toast
 //import com.google.android.gms.location.LocationRequest
 //import com.google.android.gms.location.LocationServices
 import com.mvp_kotlin_login_register_retrofit_example.R
-import com.mvp_kotlin_login_register_retrofit_example.classes.PersonData
-import com.mvp_kotlin_login_register_retrofit_example.classes.SituationModel
+import com.mvp_kotlin_login_register_retrofit_example.classes.*
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.ComplientPresenterImpl
 import com.mvp_kotlin_login_register_retrofit_example.presenter.implemenation.LoginPresenterImpl
 import com.mvp_kotlin_login_register_retrofit_example.presenter.interfaces.IComplaintPresenter
@@ -23,6 +22,7 @@ import com.mvp_kotlin_login_register_retrofit_example.view.interfaces.IComplaint
 import kotlinx.android.synthetic.main.activity_form.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.content_form.*
+import kotlinx.android.synthetic.main.fragment_account.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -63,6 +63,13 @@ class FormActivity : AppCompatActivity(), IComplaintView {
                 editFormDescription.text.toString(),
                 number.text.toString()
                 )
+
+            posts.add(Post(
+                posts.size + 1,
+                number.text.toString(),
+                editFormDescription.text.toString()
+
+            ))
         }
 
         complPresenter = ComplientPresenterImpl(this, this)
@@ -71,5 +78,13 @@ class FormActivity : AppCompatActivity(), IComplaintView {
         buttonCancel.setOnClickListener {
             finish()
         }
+
+        user_name.text = currenPerson.nameReal
+        last_name.text = currenPerson.surnname
+        pat.text = currenPerson.parentific
+        emai.text = currenPerson.email
+        ph.text = currenPerson.phone
+
+
     }
 }

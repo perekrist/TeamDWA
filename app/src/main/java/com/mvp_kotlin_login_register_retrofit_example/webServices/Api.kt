@@ -1,5 +1,6 @@
 package com.mvp_kotlin_login_register_retrofit_example.webServices
 
+import com.mvp_kotlin_login_register_retrofit_example.model.responseModels.HistoryResponseModel
 import com.mvp_kotlin_login_register_retrofit_example.model.responseModels.LoginResponseModel
 import com.mvp_kotlin_login_register_retrofit_example.model.responseModels.UserResponseModel
 import okhttp3.RequestBody
@@ -20,5 +21,8 @@ interface Api {
 
     @POST("send_complaint")
     fun complaint(@Body headers: RequestBody): Call<LoginResponseModel>
+
+    @POST("show_history")
+    fun history(@Body headers: RequestBody): Call<HistoryResponseModel>
 
 }
